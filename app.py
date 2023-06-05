@@ -12,7 +12,7 @@ import json
 
 # run app and model and open camera
 app = Flask(__name__)
-model = YOLO("yolov8n.pt")
+model = YOLO("weapondetection.pt")
 model2 = YOLO("bestface.pt")
 # load recognizer and users
 recognizer = cv.face.LBPHFaceRecognizer_create()
@@ -32,46 +32,17 @@ firebaseConfig = {
     "messagingSenderId": "72680403206",
     "appId": "1:72680403206:web:1262babdacad10df71ae87",
     "measurementId": "G-CNL7R6TF4L",
-    "serviceAccount": "udjatservicekey.json"
+    "serviceAccount": "comptation.json"
 }
+
 firebase=pyrebase.initialize_app(firebaseConfig)
 storage=firebase.storage()
 database=firebase.database()
 auth = firebase.auth()
 
-# app = Flask(__name__)
-# model = YOLO("yolov8n.pt")
-# camera = cv.VideoCapture(0)
-
-
-
-# load encoded file
-# file=open("EncodedImgs.p",'rb')
-# encodeKnownWithNames= pickle.load(file)
-# file.close()
-# encodeKnownfaces,employeenameslist =encodeKnownWithNames
-# def recognize_face(frame):
-#     imgsmall=cv.resize(frame,(0,0),None , 0.25,0.25)
-#     imgsmall=cv.cvtColor(imgsmall,cv.COLOR_BGR2RGB)
-#     currentface=face_recognition.face_locations(imgsmall)
-#     encodecurrentface=face_recognition.face_encodings(imgsmall,currentface)
-#
-#     for encodeface , faceLocation in zip(encodecurrentface,currentface):
-#         matches=face_recognition.compare_faces(encodeKnownfaces,encodeface)
-#         faceDistace=face_recognition.face_distance(encodeKnownfaces,encodeface)
-#         matchIndex=np.argmin(faceDistace)
-#         if matches[matchIndex]:
-#             empName=employeenameslist[matchIndex]
-#             y1,x2,y2,x1=faceLocation
-#             y1, x2, y2, x1= y1*4 , x2*4 , y2*4 , x1*4
-#             bbox=x1,y1,x2-x1,y2-y1
-#             # cv.rectangle(frame, bbox, (100, 100, 0), 2)
-#             frame =cvzone.cornerRect(frame,bbox,rt=0)
-#             cv.putText(frame, empName, (x1, y1 + (y2-y1)), cv.FONT_HERSHEY_SIMPLEX, 1, (50, 255,50), 2)
-
 def faceRecognation(frame):
-    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
+    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     height, width = frame.shape[:2]
     userList = []
     result = model2.predict(frame)
@@ -82,11 +53,13 @@ def faceRecognation(frame):
             b = box.xyxy[0]
             c = box.cls
             x, y, w, h = int(b[0]), int(b[1]), int(b[2]), int(b[3])
-            cv.rectangle(frame, (x, y), (w, h), (100, 0, 100), 2)
+            annotator.box_label(b, model2.names[int(c)], 3)
+            # cv.rectangle(frame, (x, y), (w, h), (100, 0, 100), 2)
             faceId, percentage = recognizer.predict(gray[y:y + h, x:x + w])
-            if percentage < 50 and faceId != 1:
+            faceId = str(faceId)
+            if percentage < 50:
                 userList.append(faceId)
-                faceId = users[str(faceId)]['name'] + ' ' + str(round(100 - percentage, 2)) + '%'
+                faceId = users[str(faceId)]['name']
             else:
                 faceId = 'Unknown'
 
@@ -110,15 +83,22 @@ def uploadphoto():
     Id = random.randrange(1, 9999, 5)
     database.child("udjat").child("unknown"+str(Id)).update(data)
     storage.child("udjat").child("unknown"+str(Id)+".jpg").put("screenShot3.jpg")
+def screenshoot(frame):
+    count=0
+    if count % 10 == 0:
+        cv.imwrite(f'screenshot_4.jpg', frame)
+    count += 1
 
 camera = cv.VideoCapture(0)
 def generate_frames():
+    camera = cv.VideoCapture(0)
+
     while True:
         res, frame = camera.read()
         if not res:
             break
         else:
-            result = model.predict(frame ,classes=[43])
+            result = model.predict(frame ,classes=[0,1])
             for r in result:
                 annotator = Annotator(frame)
                 facethread=threading.Thread(target=faceRecognation(frame))
@@ -126,22 +106,28 @@ def generate_frames():
                 for box in boxes:
                     b=box.xyxy[0]
                     c=box.cls
-                    annotator.box_label(b,model.names[int(c)],3)
+                    # annotator.box_label(b,model.names[int(c)],3)
                     # print( int(b[0]),int(c) ) #return class name , c class id
                     x, y, w, h= int(b[0]),int(b[1]),int(b[2]),int(b[3])
-                    if int(c)==43:
-                        cv.imwrite("screenShot3.jpg", frame)
+                    detectcoun=1
+                    if int(c)==1 or int(c)==0:
+                        # screenshootthread=threading.Thread(target=screenshoot(frame))
                         x, y, w, h = int(b[0]), int(b[1]), int(b[2]), int(b[3])
-                        cv.rectangle(frame, (x,y), (x + w, y + h), (0, 0, 255), 2)
+                        annotator.box_label(b, model.names[int(c)], 3)
+                        # cv.rectangle(frame, (x,y), (x + w, y + h), (0, 0, 255), 2)
                         # TrackingThread = threading.Thread(target=tracking(frame,x, y, w, h))
-                        AlarmThread = threading.Thread(target=playsound, args=("alarm3.wav",))
-                        UploadPhotoThread=threading.Thread(target=uploadphoto())
+                        # AlarmThread = threading.Thread(target=playsound, args=("alarm3.wav",))
+                        cv.imwrite("screenShot3.jpg", frame)
+                        # UploadPhotoThread=threading.Thread(target=uploadphoto())
                         # MailThread =threading.Thread(target=send_emails())
-                    facethread.start()
+
+                    # screenshootthread.start()
                     # TrackingThread.start()
-                    AlarmThread.start()
-                    UploadPhotoThread.start()
+                    # AlarmThread.start()
+                    # UploadPhotoThread.start()
                     # MailThread.start()
+                    detectcoun+=1
+                facethread.start()
 
                     # frame=annotator.result()
             ret, buffer = cv.imencode('.jpg', frame)
@@ -165,7 +151,7 @@ def generate_frames():
 
 @app.route('/' )
 def login():
-    return render_template('index.html',custom_css='static\css\main.css')
+    return render_template('login.html',custom_css='static\css\login.css',title=" login ",icon="static\img\icon.png")
 
 @app.route('/' , methods=['POST'])
 def checklog():
@@ -175,13 +161,13 @@ def checklog():
         user = auth.sign_in_with_email_and_password(email, password)
         return redirect("/home")
     except:
-        return render_template('index.html', message='Login failed' , custom_css='static\css\main.css')
+        return render_template('login.html', message='Login failed' , custom_css='static\css\login.css')
 
 
 @app.route("/home")
 def homepage():
-    return render_template('home.html',custom_css='static\css\main.css')
-    
+    return render_template('home.html',custom_css='static\css\cameras.css', htitle="Home",icon="static\img\icon.png")
+
 @app.route('/home' , methods=['POST'])
 def close():
     camera.release()
@@ -189,16 +175,16 @@ def close():
 
 @app.route("/detections")
 def detections():
-    # all_files=storage.child("udjat").list_files()
-    # imgs = [file for file in all_files if file.name.endswith('.jpg') or file.name.endswith('.png')]
-    # links = [storage.child(file.name).get_url(None) for file in imgs]
-    images = storage.child("udjat").list_files()
-    image_urls = []
-    for image in images:
-        image_url = storage.child(image.name).get_url(None)
-        image_urls.append(image_url)
+    all_files=storage.child("udjat").list_files()
+    imgs = [file for file in all_files if file.name.endswith('.jpg') or file.name.endswith('.png')]
+    links = [storage.child(file.name).get_url(None) for file in imgs]
+    # images = storage.child("udjat").list_files()
+    # image_urls = []
+    # for image in images:
+    #     image_url = storage.child(image.name).get_url(None)
+    #     image_urls.append(image_url)
 
-    return render_template('detections.html',images=image_urls ,custom_css='static\css\detections.css')
+    return render_template('detections2.html',images=links ,custom_css='static\css\detections2.css', title=" Detection",icon="static\img\icon.png")
 
 @app.route('/video')
 def video():
