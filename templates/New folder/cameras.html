@@ -1,17 +1,9 @@
 
 {% extends 'base.html'%}
-
 {% block body %}
-
 {% if custom_css %}
 <link rel="stylesheet" href="{{ url_for('static',filename='css/cameras.css')}}">
 {% endif%}
-
-{% if htitle %}
-<title>{{htitle}}</title>
-<link rel="icon" href="{{ url_for('static', filename='img/icon.png') }}">
-{% endif %}
-
 <div class="header"> 
     <div class="container row justify-content-center align-items-center">   
         <h1 class="h1u">UDJAT</h1>

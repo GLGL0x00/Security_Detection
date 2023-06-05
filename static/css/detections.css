@@ -3,11 +3,17 @@
     padding: 0;
     /* text-transform: capitalize; */
 }
-
-body {
+/*body {
     background-color: black; 
+}*/
+body {
+    background-color: black;
+    background-image: url('/static/img/OIG.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100%;
 }
-
 .header h1{
     color: orange;
     display: flex;
@@ -37,7 +43,8 @@ body {
     border: 1px solid white;
 }
 .text{
-    color: orange;
+    /* color: orange; */
+    color: white;
 }
 @media (max-width:767px) {
     .card{
