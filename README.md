@@ -13,7 +13,7 @@ To download the project, you have two options:
 
 ### Option 1: Git Clone
 1. Open a terminal or command prompt.
-2. Run the following command to clone the repository:
+2. Run the following command to clone the repository: `gut clone https://github.com/UDJAT74/Security_Dtection`
 3. Change to the project directory:
 
 ### Option 2: Manual Download
