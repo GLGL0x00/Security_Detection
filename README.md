@@ -34,6 +34,9 @@ Make sure you have Python and pip installed on your system. Then, follow these s
 
 ## Usage
 To use the weapon detection scripts, follow these instructions:
+1. after you change to the project directory 
+2. right click then press on open in terminal
+3. run this command in terminal: `pyhton GUI.py` 
 
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
