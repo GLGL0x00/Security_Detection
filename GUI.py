@@ -1,7 +1,7 @@
 import webbrowser
 import customtkinter
 from subprocess import Popen
-from detector import detector
+from detector import detector,live_detection
 from startwindo import createstartwindow
 from weaponDetect import weapondetecter
 #Creating
@@ -14,6 +14,10 @@ def gui_s() :
     def detect_face():
         root.destroy()
         detector()
+        gui_s()
+    def detect_face_and_weapon():
+        root.destroy()
+        live_detection()
         gui_s()
     def detect_weapon():
         root.destroy()
@@ -68,7 +72,7 @@ def gui_s() :
     label3.pack(pady = 12, padx=  10)
     btn1 = customtkinter.CTkButton(master=frame2, text="Create", font=("Arial",20), width=200, height=50,  command =creat_s ) #Create
     btn1.pack(pady = 12, padx = 10)
-    btn2 = customtkinter.CTkButton(master=frame2, text="Live Detect", font=("Arial",20),width=200, height=50, command =login) #Detect
+    btn2 = customtkinter.CTkButton(master=frame2, text="Live Detect", font=("Arial",20),width=200, height=50, command =detect_face_and_weapon) #Detect
     btn2.pack(pady = 12, padx = 10)
 
     #Additonal functions
