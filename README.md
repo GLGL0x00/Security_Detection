@@ -17,7 +17,7 @@ To download the project, you have two options:
 3. Change to the project directory:
 
 ### Option 2: Manual Download
-1. Navigate to the project's GitHub repository: [Weapon Detection Project](https://github.com/your-username/weapon-detection).
+1. Navigate to the project's GitHub repository: [Weapon Detection Project](https://github.com/UDJAT74/Security_Dtection).
 2. Click on the "Code" button.
 3. Select "Download ZIP" to download the project as a ZIP archive.
 4. Extract the downloaded ZIP archive to your desired location.
