@@ -33,7 +33,7 @@ Make sure you have Python and pip installed on your system. Then, follow these s
 
 
 ## Usage
-To use the weapon detection scripts, follow the instructions provided in the project's documentation or code comments.
+To use the weapon detection scripts, follow these instructions:
 
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
