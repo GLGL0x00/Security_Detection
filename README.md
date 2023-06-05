@@ -48,7 +48,7 @@ open website => open website that contains all these functionality , monitor cam
 
 ## Contributors
 ##### Supervisor: Dr/Wael_Zakriya
-1. [Ahmed_Abdelgelel](https://github.com/Ahmed-abdelgalil)).
+1. [Ahmed_Abdelgelel](https://github.com/Ahmed-abdelgalil).
 2. [Ahmed_Salem](https://github.com/el3amed74).
 3. [Youssef_tarek](https://github.com/yousseftarek2001)
 4. [Mohamed_Medhat](https://github.com/mohamedmedhat1)
