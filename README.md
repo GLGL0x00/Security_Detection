@@ -23,7 +23,9 @@ To download the project, you have two options:
 4. Extract the downloaded ZIP archive to your desired location.
 
 ## Installing the Requirements
-Once you have downloaded the project, you need to install the required dependencies. Make sure you have Python and pip installed on your system. Then, follow these steps:
+Once you have downloaded the project, you need to install the required dependencies.
+### Note: 
+Make sure you have Python and pip installed on your system. Then, follow these steps:
 
 1. Open a terminal or command prompt.
 2. Change to the project directory if you haven't already:
