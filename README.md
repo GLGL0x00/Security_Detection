@@ -36,7 +36,15 @@ Make sure you have Python and pip installed on your system. Then, follow these s
 To use the weapon detection scripts, follow these instructions:
 1. After you change to the project directory 
 2. Right click then press on "open in terminal"
-3. Run this command in terminal: `pyhton GUI.py` 
+3. Run this command in terminal: `pyhton GUI.py` this photo will appear :  
+ ![image](https://github.com/UDJAT74/Security_Dtection/assets/128726786/3c5e73ed-160d-4de3-879e-7b9e0c829807)
+## BUtton Description
+Create => run create function to add new person to be known.<br/>
+live Detection => Detect weapons and Face recognation <br/>
+live face Detect => Detect and Recognize faces. <br/>
+live weapon => Detect weapons <br/>
+open website => open websit that contains all these functionality , monitor cameras and contains previous detections
+
 
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
