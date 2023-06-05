@@ -43,10 +43,19 @@ Create => run create function to add new person to be known.<br/>
 live Detection => Detect weapons and Face recognation <br/>
 live face Detect => Detect and Recognize faces. <br/>
 live weapon => Detect weapons <br/>
-open website => open websit that contains all these functionality , monitor cameras and contains previous detections
+open website => open website that contains all these functionality , monitor cameras and contains previous detections
 
+
+## Contributors
+##### Supervisor: Dr/Wael_Zakriya
+1. [Ahmed_Abdelgelel](https://github.com/Ahmed-abdelgalil)).
+2. [Ahmed_Salem](https://github.com/el3amed74).
+3. [Youssef_tarek](https://github.com/yousseftarek2001)
+4. [Mohamed_Medhat](https://github.com/mohamedmedhat1)
 
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
+
+
 
 
