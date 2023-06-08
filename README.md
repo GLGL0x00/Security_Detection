@@ -39,9 +39,11 @@ To use the weapon detection scripts, follow these instructions:
 3. Run this command in terminal: `pyhton GUI.py` this photo will appear :  
  ![image](https://github.com/UDJAT74/Security_Dtection/assets/128726786/3c5e73ed-160d-4de3-879e-7b9e0c829807)
 ## BUtton Description
+### Note: before you run create and live face detect make sure that users.json and trainner.yaml exist <br/>
+### Download trainner.yaml from here `https://drive.google.com/file/d/1dZpsA0xy-_Ar61lADLfczGcTg64552hM/view?usp=sharing`
 Create => run create function to add new person to be known.<br/>
-live Detection => Detect weapons and Face recognation <br/>
 live face Detect => Detect and Recognize faces. <br/>
+live Detection => Detect weapons and Face recognation <br/>
 live weapon => Detect weapons <br/>
 open website => open website that contains all these functionality , monitor cameras and contains previous detections
 
