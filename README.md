@@ -1,7 +1,5 @@
 # Security_Dtection
 
-# Weapon Detection Project
-
 ## Problem Description
 The Weapon Detection Project aims to develop an intelligent system capable of detecting weapons in images and videos. The project utilizes computer vision techniques and machine learning algorithms to identify and classify weapons, helping to enhance security and public safety.
 
