@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* text-transform: capitalize; */
+}
+/*body {
+    background-color: black; 
+}*/
+body {
+    background-color: black;
+    background-image: url('/static/img/OIG.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100%;
+}
+.header h1{
+    color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line{
+    height: 1px;
+    display: block;
+    background-color: white;
+}
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    margin: 5px;
+    width: 500px;
+    background-color: black;
+}
+
+.cardimg{
+    width: 550px;
+    height: 150px;
+    border: 1px solid white;
+}
+.text{
+    /* color: orange; */
+    color: white;
+}
+@media (max-width:767px) {
+    .card{
+        width: 375px;
+    }
+}
