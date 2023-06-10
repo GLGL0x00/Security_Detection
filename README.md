@@ -35,7 +35,7 @@ To use the weapon detection scripts, follow these instructions:
 1. After you change to the project directory 
 2. Right click then press on "open in terminal"
 3. Run this command in terminal: `pyhton GUI.py` this photo will appear :  
- ![image](https://github.com/UDJAT74/Security_Dtection/assets/128726786/3c5e73ed-160d-4de3-879e-7b9e0c829807)
+ ![image](https://github.com/UDJAT74/Security_Dtection/assets/128726786/347d417c-bae2-4bab-97f1-a67613a9d417)
 ### Note: before you run create and live face detect make sure that users.json and trainner.yaml exist <br/>
 ### Download trainner.yaml from [here](https://drive.google.com/file/d/1dZpsA0xy-_Ar61lADLfczGcTg64552hM/view?usp=sharing)
 ## BUtton Description
