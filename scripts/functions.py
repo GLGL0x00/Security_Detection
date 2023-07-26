@@ -23,17 +23,7 @@ recognizer = cv.face.LBPHFaceRecognizer_create()
 recognizer.read('trainneruser.yml')
 
 # handle DataBase
-firebaseConfig = {
-    "apiKey": "AIzaSyAnhloXy_qVpeLDydEkAQ878aYPoSuW1q4",
-    "authDomain": "competition-a5c93.firebaseapp.com",
-    "databaseURL": "https://competition-a5c93-default-rtdb.firebaseio.com/",
-    "projectId": "competition-a5c93",
-    "storageBucket": "competition-a5c93.appspot.com",
-    "messagingSenderId": "72680403206",
-    "appId": "1:72680403206:web:1262babdacad10df71ae87",
-    "measurementId": "G-CNL7R6TF4L",
-    "serviceAccount": "comptation.json"
-}
+
 
 firebase=pyrebase.initialize_app(firebaseConfig)
 storage=firebase.storage()
