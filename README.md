@@ -38,7 +38,7 @@ To use the weapon detection scripts, follow these instructions:
  ![image](https://github.com/UDJAT74/Security_Dtection/assets/128726786/347d417c-bae2-4bab-97f1-a67613a9d417)
 ### Note: before you run create and live face detect make sure that users.json and trainner.yaml exist <br/>
 ### Download trainner.yaml from [here](https://drive.google.com/file/d/1dZpsA0xy-_Ar61lADLfczGcTg64552hM/view?usp=sharing)
-## BUtton Description
+## Button Description
 
 Create => run create function to add new person to be known.<br/>
 live face Detect => Detect and Recognize faces. <br/>
