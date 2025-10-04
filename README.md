@@ -1,62 +1,100 @@
-# Security_Dtection
+## Security Detection: Face, Weapon, and Criminal Recognition (Real-time)
 
-## Problem Description
-The Weapon Detection Project aims to develop an intelligent system capable of detecting weapons in images and videos. The project utilizes computer vision techniques and machine learning algorithms to identify and classify weapons, helping to enhance security and public safety.
+An end-to-end system that detects weapons (guns/knives), recognizes faces, and maintains a persistent list of criminals. The system triggers alarms and captures evidence on criminal detection.
 
-## Project Description
-This project provides a solution for weapon detection using deep learning and image processing techniques. It includes a pre-trained model and a set of scripts to perform weapon detection on images and videos.
+### Problem Description
+Traditional CCTV lacks real-time context. This project fuses face recognition and weapon detection to: (1) flag unknown individuals holding weapons, (2) enforce per-user weapon permissions, and (3) instantly alert on known criminals with visual evidence.
 
-## Downloading the Project
-To download the project, you have two options:
+### How It Works (Overview)
+The pipeline combines a YOLO-based detector with LBPH face recognition, maintaining user modes and a criminals registry.
 
-### Option 1: Git Clone
-1. Open a terminal or command prompt.
-2. Run the following command to clone the repository: `gut clone https://github.com/UDJAT74/Security_Dtection`
-3. Change to the project directory:
+![System Architecture](Diagram.png)
 
-### Option 2: Manual Download
-1. Navigate to the project's GitHub repository: [Weapon Detection Project](https://github.com/UDJAT74/Security_Dtection).
-2. Click on the "Code" button.
-3. Select "Download ZIP" to download the project as a ZIP archive.
-4. Extract the downloaded ZIP archive to your desired location.
+### Core Logic: Three Cases
+- **Unknown person holding weapon (gun/knife)**: Add to `criminals.json` for future detection.
+- **Known person with modes (allowed / not allowed)**: If not allowed and holding weapon → add to criminals.
+- **Criminal detected (with or without weapon)**: Play alarm and capture screenshot.
 
-## Installing the Requirements
-Once you have downloaded the project, you need to install the required dependencies.
-### Note: 
-Make sure you have Python and pip installed on your system. Then, follow these steps:
+### Model Components
+- **Face Recognition**: YOLO face detection + LBPH recognizer (`trainneruser.yml`).
+- **Weapon Detection**: YOLO model detecting guns and knives.
+- **Criminal Registry**: `criminals.json` maintained by the pipeline and `tracker.py`.
 
-1. Open a terminal or command prompt.
-2. Change to the project directory if you haven't already:
-3. Run the following command to install the dependencies: `pip install -r requirements.txt`
+---
 
+## Confusion Matrix
+Below is the normalized confusion matrix for the weapon detector. Use it to understand class-wise performance and common confusions.
 
-## Usage
-To use the weapon detection scripts, follow these instructions:
-1. After you change to the project directory 
-2. Right click then press on "open in terminal"
-3. Run this command in terminal: `pyhton GUI.py` this photo will appear :  
- ![image](https://github.com/UDJAT74/Security_Dtection/assets/128726786/347d417c-bae2-4bab-97f1-a67613a9d417)
-### Note: before you run create and live face detect make sure that users.json and trainner.yaml exist <br/>
-### Download trainner.yaml from [here](https://drive.google.com/file/d/1dZpsA0xy-_Ar61lADLfczGcTg64552hM/view?usp=sharing)
-## BUtton Description
+![Confusion Matrix](confusion_matrix_normalized.png)
 
-Create => run create function to add new person to be known.<br/>
-live face Detect => Detect and Recognize faces. <br/>
-live Detection => Detect weapons and Face recognation <br/>
-live weapon => Detect weapons <br/>
-open website => open website that contains all these functionality , monitor cameras and contains previous detections
+---
 
+## Real-time Demo
+- Weapon model demo (guns/knives): [YouTube link pending]
+- Full pipeline demo (faces + modes + alarm + screenshots): [YouTube link pending]
+
+> Once links are available, replace the placeholders above. Optionally add short GIF previews under `static/img/`.
+
+---
+
+## Quick Start
+
+### Requirements
+Install Python 3.9+ and dependencies:
+
+```bash
+pip install -r requirments.txt
+```
+
+### Prepare Data
+- Ensure `users.json` and `trainneruser.yml` exist for known users.
+- Use `create.py` to register a new user (captures 60 face images and retrains).
+
+### Run
+- Register user: `python create.py`
+- Recognize / monitor users: `python detector.py`
+- Criminal capture flow (screenshots + retrain): `python tracker.py`
+- Weapon-only demo: `python weaponDetect.py`
+- Combined live demo (faces + weapons): use `live_detection()` in `detector.py`
+
+---
+
+## Project Structure (Key Files)
+
+```
+create.py           # Register user and retrain
+detector.py         # Face recognition, criminals, live detection
+tracker.py          # Hand/object overlap, capture screenshots, update criminals
+weaponDetect.py     # Weapon-only detection demo
+trainner.py         # Training utilities (LBPH)
+users.json          # Known users with modes (allowed / not allowed)
+criminals.json      # Criminal registry
+models/             # Model weights (YOLO)
+static/, templates/ # Web/static assets (if applicable)
+```
+
+---
+
+## Streamlit App (TODO)
+- Live monitoring dashboard
+- Recent detections and screenshots
+- Toggle user modes (allowed/not allowed)
+- Start/stop camera pipelines
+
+---
+
+## Ethics & Disclaimer
+Use responsibly and comply with local laws and privacy regulations. Models may exhibit bias or errors; always keep a human in the loop for critical decisions.
+
+## License
+MIT (or update to your chosen license)
 
 ## Contributors
-##### Supervisor: Dr/Wael_Zakriya
-1. [Ahmed_Abdelgelel](https://github.com/Ahmed-abdelgalil).
-2. [Ahmed_Salem](https://github.com/el3amed74).
-3. [Youssef_tarek](https://github.com/yousseftarek2001)
-4. [Mohamed_Medhat](https://github.com/mohamedmedhat1)
+Supervisor: Dr/Wael Zakriya
+1. [Ahmed Abdelgelel](https://github.com/Ahmed-abdelgalil)
+2. [Ahmed Salem](https://github.com/el3amed74)
+3. [Youssef Tarek](https://github.com/yousseftarek2001)
+4. [Mohamed Medhat](https://github.com/mohamedmedhat1)
 
 ## Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
-
-
-
-
+Contributions are welcome! Feel free to open issues or PRs.
