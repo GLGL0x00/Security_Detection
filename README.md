@@ -35,6 +35,40 @@ Below is the normalized confusion matrix for the weapon detector. Use it to unde
 
 > Once links are available, replace the placeholders above. Optionally add short GIF previews under `static/img/`.
 
+
+### Gun Detection Example
+
+
+<div align="center">
+
+<img src="screenshots\criminal.119.1.jpg" alt="gun1" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.119.3.jpg" alt="gun2" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.119.4.jpg" alt="gun3" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.119.49.jpg" alt="gun4" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.119.157.jpg" alt="gun5" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.119.218.jpg" alt="gun6" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+
+</div>
+
+
+### Knife Detection Example
+
+https://github.com/UDJAT74/Security_Dtection/assets/128726786/knife_tracker.mp4
+
+### Sample Real-time Screenshots
+
+<div align="center">
+
+<img src="screenshots/criminal.109.3.jpg" alt="shot1" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots/criminal.109.10.jpg" alt="shot2" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots/criminal.109.14.jpg" alt="shot3" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+
+<img src="screenshots/criminal.109.16.jpg" alt="shot4" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots/criminal.109.19.jpg" alt="shot5" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots/criminal.109.29.jpg" alt="shot6" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+
+</div>
+
 ---
 
 ## Quick Start
