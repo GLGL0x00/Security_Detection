@@ -16,19 +16,11 @@ The pipeline combines a YOLO-based detector with LBPH face recognition, maintain
 - **Criminal detected (with or without weapon)**: Play alarm and capture screenshot.
 
 ### Model Components
-- **Face Recognition**: YOLO face detection + LBPH recognizer (`trainneruser.yml`).
-- **Weapon Detection**: YOLO model detecting guns and knives.
+- **Face Recognition**: YOLOv8 face detection + LBPH recognizer (`trainneruser.yml`).
+- **Weapon Detection**: YOLOv8 model detecting guns and knives.
 - **Criminal Registry**: `criminals.json` maintained by the pipeline and `tracker.py`.
 
 ---
-
-## Confusion Matrix
-Below is the normalized confusion matrix for the weapon detector. Use it to understand class-wise performance and common confusions.
-
-![Confusion Matrix](confusion_matrix_normalized.png)
-
----
-
 ## Real-time Demo
 - Weapon model demo (guns/knives): [YouTube link pending]
 - Full pipeline demo (faces + modes + alarm + screenshots): [YouTube link pending]
@@ -70,6 +62,14 @@ https://github.com/UDJAT74/Security_Dtection/assets/128726786/knife_tracker.mp4
 
 ---
 
+## Confusion Matrix
+Below is the normalized confusion matrix for the weapon detector. Use it to understand class-wise performance and common confusions.
+
+![Confusion Matrix](confusion_matrix_normalized.png)
+
+---
+
+
 ## Quick Start
 
 ### Requirements
@@ -106,25 +106,17 @@ models/             # Model weights (YOLO)
 static/, templates/ # Web/static assets (if applicable)
 ```
 
----
-
-## Streamlit App (TODO)
-- Live monitoring dashboard
-- Recent detections and screenshots
-- Toggle user modes (allowed/not allowed)
-- Start/stop camera pipelines
 
 ---
 
 ## Ethics & Disclaimer
 Use responsibly and comply with local laws and privacy regulations. Models may exhibit bias or errors; always keep a human in the loop for critical decisions.
 
-## License
-MIT (or update to your chosen license)
+---
 
 ## Contributors
 Supervisor: Dr/Wael Zakriya
-1. [Ahmed Abdelgelel](https://github.com/Ahmed-abdelgalil)
+1. [Ahmed Abdelgelel](https://github.com/GLGL0x00)
 2. [Ahmed Salem](https://github.com/el3amed74)
 3. [Youssef Tarek](https://github.com/yousseftarek2001)
 4. [Mohamed Medhat](https://github.com/mohamedmedhat1)
