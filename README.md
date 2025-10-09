@@ -76,13 +76,17 @@ pip install -r requirments.txt
 ### Prepare Data
 - Ensure `users.json` and `trainneruser.yml` exist for known users.
 - Use `create.py` to register a new user (captures 60 face images and retrains).
+  
+### GUI
+ ![image](https://github.com/UDJAT74/Security_Dtection/assets/128726786/347d417c-bae2-4bab-97f1-a67613a9d417)
 
 ### Run
-- Register user: `python create.py`
-- Recognize / monitor users: `python detector.py`
+- Use GUI: `pyhton GUI.py`  
+- Register user: `python create.py` or click on `Create` button in GUI
+- Recognize / monitor users: use `detector()` in `detector.py` or click on `live face Detect` button in GUI
 - Criminal capture flow (screenshots + retrain): `python tracker.py`
-- Weapon-only demo: `python weaponDetect.py`
-- Combined live demo (faces + weapons): use `live_detection()` in `detector.py`
+- Weapon-only demo: `python weaponDetect.py` or click on `live weapon` button in GUI
+- Combined live demo (faces + weapons): use `live_detection()` in `detector.py` or click on `live Detection ` button in GUI
 
 ---
 
