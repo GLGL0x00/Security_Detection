@@ -22,13 +22,11 @@ The pipeline combines a YOLO-based detector with LBPH face recognition, maintain
 
 ---
 ## Real-time Demo
-- Weapon model demo (guns/knives): [YouTube link pending]
+- Weapon model demo (guns/knives): [[YouTube link](https://youtube.com/playlist?list=PLo_W0PgQBsKIjS82sSxyWH7cXOqnm9D6x&si=Bpqi2vPinoDJo2AS)]
 - Full pipeline demo (faces + modes + alarm + screenshots): [YouTube link pending]
 
-> Once links are available, replace the placeholders above. Optionally add short GIF previews under `static/img/`.
 
-
-### Gun Detection Example
+### Gun Detection Screenshots Example
 
 
 <div align="center">
@@ -43,11 +41,7 @@ The pipeline combines a YOLO-based detector with LBPH face recognition, maintain
 </div>
 
 
-### Knife Detection Example
-
-https://github.com/UDJAT74/Security_Dtection/assets/128726786/knife_tracker.mp4
-
-### Sample Real-time Screenshots
+### Knife Detection Screenshots Example
 
 <div align="center">
 
