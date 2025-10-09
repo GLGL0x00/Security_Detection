@@ -59,13 +59,13 @@ https://github.com/UDJAT74/Security_Dtection/assets/128726786/knife_tracker.mp4
 
 <div align="center">
 
-<img src="screenshots/criminal.110.1.jpg" alt="shot1" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
-<img src="screenshots/criminal.110.6.jpg" alt="shot2" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
-<img src="screenshots/criminal.110.23.jpg" alt="shot3" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots/criminal.110.1.jpg" alt="shot1" style="width: 200px; height: 300px; object-fit: cover; margin: 5px;" />
+<img src="screenshots/criminal.110.6.jpg" alt="shot2" style="width: 200px; height: 300px; object-fit: cover; margin: 5px;" />
+<img src="screenshots/criminal.110.23.jpg" alt="shot3" style="width: 200px; height: 300px; object-fit: cover; margin: 5px;" />
 
-<img src="screenshots/criminal.110.44.jpg" alt="shot4" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
-<img src="screenshots/criminal.110.166.jpg" alt="shot5" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
-<img src="screenshots/criminal.110.656.jpg" alt="shot6" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots/criminal.110.44.jpg" alt="shot4" style="width: 200px; height: 300px; object-fit: cover; margin: 5px;" />
+<img src="screenshots/criminal.110.166.jpg" alt="shot5" style="width: 200px; height: 300px; object-fit: cover; margin: 5px;" />
+<img src="screenshots/criminal.110.656.jpg" alt="shot6" style="width: 200px; height: 300px; object-fit: cover; margin: 5px;" />
 
 </div>
 
