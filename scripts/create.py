@@ -3,10 +3,28 @@ from trainner import trainner
 import json
 from random import randint
 from ultralytics import YOLO
-from ultralytics.yolo.utils.plotting import Annotator
-
+from ultralytics.utils.plotting import Annotator
+import torch
 
 def create():
+    """
+    Capture face images from the webcam using a YOLO face model and register a user.
+
+    Workflow:
+    - Prompt for a non-numeric user name (re-prompt until valid).
+    - Assign a random numeric ID in the range [0, 100].
+    - Continuously read frames from the default camera and run face detection
+      with a single-face maximum per frame.
+    - Save up to 60 grayscale face crops to
+      `dataset/User.<ID>.<N>.jpg` (press 'q' to exit early).
+    - Update `users.json` with an entry `{ID: {"name": <user_name>}}`.
+    - Invoke `trainner()` to retrain the recognizer on the updated dataset.
+
+    Side effects:
+    - Writes images into the `dataset/` directory.
+    - Reads/writes `users.json` in the project root.
+    - Opens a window titled 'Frame' to preview detection.
+    """
     camera = cv2.VideoCapture(0)
 
     model = YOLO("bestface.pt")

@@ -6,7 +6,7 @@ from random import randint
 import json
 import cv2
 from ultralytics import YOLO
-from ultralytics.yolo.utils.plotting import Annotator
+from ultralytics.utils.plotting import Annotator
 from trainner import trainner
 
 model = YOLO("bestface.pt")
@@ -99,3 +99,4 @@ def createstartwindow():
     # Start the GUI event loop
     window.mainloop()
 
+# createstartwindow()

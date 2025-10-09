@@ -9,9 +9,9 @@ from tracker import tracker
 def gui_s() :
     Popen(['python', 'app.py'])
     def add_new_person():
-        # root.destroy()
+        root.destroy()
         createstartwindow()
-        # gui_s()
+        gui_s()
     def detect_face():
         root.destroy()
         detector()
@@ -35,9 +35,8 @@ def gui_s() :
         gui_s()
     def url():
         url = "http://127.0.0.1:5000"
-        webbrowser.register('edge', None, webbrowser.BackgroundBrowser(
-            "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"))
-        webbrowser.get('edge').open(url)
+        # Open with default system browser instead of hardcoded Edge path
+        webbrowser.open(url)
 
     root = customtkinter.CTk()
     root.geometry("850x700")
@@ -120,4 +119,5 @@ def gui_s() :
 
     #Run
     root.mainloop()
+    
 gui_s()

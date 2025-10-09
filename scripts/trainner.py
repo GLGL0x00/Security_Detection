@@ -3,7 +3,7 @@ import os
 from PIL import Image
 import numpy as np
 from ultralytics import YOLO
-from ultralytics.yolo.utils.plotting import Annotator
+from ultralytics.utils.plotting import Annotator
 
 def trainner():
     faceArr, ids = [], []
@@ -28,7 +28,7 @@ def trainner():
 
         result = model.predict(img)
         for r in result:
-            annotator = Annotator(imgArr)
+            # annotator = Annotator(imgArr)
             boxes = r.boxes
             for box in boxes:
                 b = box.xyxy[0]

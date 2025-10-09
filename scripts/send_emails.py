@@ -1,10 +1,3 @@
-"""
-######################################################################
-Email With Attachments Python Script
-Coded By "The Intrigued Engineer" over a coffee
-Thanks For Watching!!!
-######################################################################
-"""
 
 import smtplib
 from email.mime.text import MIMEText
@@ -12,24 +5,18 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 import datetime
-# Setup port number and server name
-
-smtp_port = 587                 # Standard secure SMTP port
-smtp_server = "smtp.gmail.com"  # Google SMTP Server
-
-# Set up the email lists
-email_from = "udjatandninja74@gmail.com"
-email_list = ["ahmedsalem292001@gmail.com","amabdelgalil78@gmail.com", "youyou_tarek2001@hotmail.com"]#wael.zakaria@sci.asu.edu.eg,"amabdelgalil78@gmail.com", "youyou_tarek2001@hotmail.com"]
-
-# Define the password (better to reference externally)
-pswd = "emugdnwdbrnevpnr" # As shown in the video this password is now dead, left in as example only
+from typing import List
+from config import get_email_config
 
 
-# name the email subject
 subject = "Security Alert !!"
 
 # Define the email function (dont call it email!)
 def send_emails():
+    email_from, pswd, email_list, smtp_server, smtp_port = get_email_config()
+    if not email_from or not pswd or not email_list:
+        # Missing configuration; do not attempt to send
+        return
 
     for person in email_list:
 

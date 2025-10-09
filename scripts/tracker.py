@@ -1,24 +1,45 @@
 import cv2
 import mediapipe as mp
 import numpy as np
+from torch.cuda import device
 from ultralytics import YOLO
-from ultralytics.yolo.utils.plotting import Annotator
+from ultralytics.utils.plotting import Annotator
 import os
 from trainner import  trainnerwithpath
 from random import randint
 import json
+import time as t
 
 # Load the YOLO object detection models
-model = YOLO('best_me.pt')  # Load the first model
+model = YOLO("E:\Ahmed\Security detection\\train attempts\yolov8n_wlr2-Last try\weights\\best.pt")  # Load the first model
+# model = YOLO("best_lastTry.pt")
 model2 = YOLO('yolov8n.pt')  # Load the second model
 
 # Create a Mediapipe hand object
 mp_hands = mp.solutions.hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.3)
 
 # Create a VideoCapture object to read frames from the webcam
-cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("E:\Ahmed\Security_Dtection-Github - Copy\pics_vids\knife_testt.mp4")
 
 def tracker():
+    """
+    Track hands and detect objects to capture and register potential criminals.
+
+    Behavior:
+    - Uses Mediapipe to detect up to two hands per frame from the default webcam.
+    - Runs two YOLO models: `model` (weapon/target) and `model2` (person class only).
+    - When a detected hand intersects a detected target, checks for overlap with
+      a detected person and saves up to five grayscale crops as
+      `screenshots/criminal.<ID>.<N>.jpg`.
+    - Displays a live preview window titled 'Object Tracking and Hand Pose Estimation'
+      until 'q' is pressed.
+
+    Side effects:
+    - Creates the `screenshots/` directory if missing and writes image files.
+    - Updates `criminals.json` with a new entry for the generated ID.
+    - Calls `trainnerwithpath("screenshots")` to retrain based on captured images.
+    """
     # Initialize variables for object and hand tracking
     object_bbox = None
     object_tracking = False
@@ -29,10 +50,14 @@ def tracker():
     screenshot_dir = 'screenshots'
     if not os.path.exists(screenshot_dir):
         os.makedirs(screenshot_dir)
+    start_time = t.time()
 
     while True:
         # Read a frame from the webcam
         ret, frame = cap.read()
+        # Handle end-of-stream or failed capture
+        if not ret or frame is None:
+            break
         # Convert the frame to RGB for Mediapipe
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
@@ -40,10 +65,11 @@ def tracker():
         results_hands = mp_hands.process(frame_rgb)
 
         # Process the frame with YOLO object detection (model)
-        result = model(frame)
+        # result = model(frame, imgsz=512, max_det=50,)
+        result = model.predict(frame, classes=[0,1],stream=True, max_det=1, vid_stride=5, imgsz=512, stream_buffer=True, save=True)
 
         # Process the frame with YOLO object detection (model2)
-        result2 = model2(frame, classes=[0],max_det=1)
+        result2 = model2(frame, classes=[0],imgsz=512, max_det=1, vid_stride=5, stream=True, stream_buffer=True, save=True)
 
 
         # Check if hands were detected
@@ -83,7 +109,7 @@ def tracker():
                         for box2 in boxes2:
                             b2 = box2.xyxy[0]
                             c2 = box2.cls
-                            annotator.box_label(b2, "criminal", 3)
+                            annotator.box_label(b2, "Criminal", 3)
 
                             # Check if the object bounding box of model2 intersects with the bounding box of model1
                             if (
@@ -107,10 +133,11 @@ def tracker():
 
         # Display the frame
         cv2.imshow('Object Tracking and Hand Pose Estimation', frame)
-
+        
         # Exit the loop if 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+    end_time = t.time()
     # Release the VideoCapture object and close the windows
     cap.release()
     cv2.destroyAllWindows()
@@ -128,5 +155,10 @@ def tracker():
         json.dump(data, file,indent = 4)
 
     trainnerwithpath(screenshot_dir)
+    print(f"Time taken: {round(end_time - start_time, 2)} seconds")
+    
 
-# tracker()
+# Time taken: 92.55 seconds in 1001.mp4 with best_lastTry.pt and yolov8n.pt 
+# Time taken: 258.03 seconds in "E:\Ahmed\demo materials\weapon_videos\Knife2.mp4" with best_lastTry.pt and yolov8n.pt
+
+tracker()

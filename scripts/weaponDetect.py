@@ -1,7 +1,8 @@
 import cv2 as cv
 from ultralytics import YOLO
-from ultralytics.yolo.utils.plotting import Annotator
-model = YOLO("weapondetection.pt")
+from ultralytics.utils.plotting import Annotator
+# model = YOLO("E:\\Mine\\Security detection\\train attempts\\yolov8n_wlr2-Last try\\yolov8n_wlr2\\weights\\best.pt")
+model = YOLO("E:\\Ahmed\\Security detection\\train attempts\\yolov8n_wlr2-Last try\\weights\\best.pt")
 
 def weapondetecter():
 

@@ -1,13 +1,18 @@
 import cv2 as cv
 import json
 from ultralytics import YOLO
-from ultralytics.yolo.utils.plotting import Annotator
+from ultralytics.utils.plotting import Annotator
 import threading
 from playsound import playsound
+from ultralytics.nn.tasks import DetectionModel
+
+
 
 camera = cv.VideoCapture(0)
 model = YOLO("bestface.pt")
-model2 = YOLO("best_me.pt")
+weapon_model = YOLO("best_me.pt")
+# weapon_model = YOLO("best_lastTry.pt")
+
 recognizer = cv.face.LBPHFaceRecognizer_create()
 recognizer.read('trainneruser.yml')
 
@@ -19,6 +24,19 @@ userList = []
 
 
 def detector():
+    """
+    Run live face detection and user recognition on the default webcam.
+
+    Behavior:
+    - Reads frames from `camera` and detects faces with the YOLO face model.
+    - Predicts user ID using the LBPH recognizer (`trainneruser.yml`).
+    - Overlays bounding boxes and recognized names (or 'Unknown') on the frame.
+    - Displays a window titled 'Image' until 'q' is pressed.
+
+    Side effects:
+    - Opens and reads the default webcam.
+    - Renders a live window; press 'q' to exit and release the camera.
+    """
     # Capture video on webcam
     count = 0
 
@@ -58,6 +76,21 @@ def detector():
 
 
 def detectorcrim():
+    """
+    Run live face detection and criminal identification with audible alert.
+
+    Behavior:
+    - Loads LBPH recognizer data from `trainnercrim.yml` and criminal metadata
+      from `criminals.json`.
+    - Detects faces via the YOLO face model and predicts IDs via LBPH.
+    - If a recognized criminal is detected (low mismatch), overlays the name
+      and plays `alarm3.wav` in a background thread.
+    - Displays a window titled 'Image' until 'q' is pressed.
+
+    Side effects:
+    - Accesses webcam, reads JSON, and plays sound from `alarm3.wav`.
+    - Shows a live preview window; press 'q' to exit and release resources.
+    """
     recognizer = cv.face.LBPHFaceRecognizer_create()
     recognizer.read('trainnercrim.yml')
 
@@ -107,6 +140,20 @@ def detectorcrim():
 
 
 def live_detection():
+    """
+    Perform simultaneous weapon detection and face recognition from the webcam.
+
+    Behavior:
+    - Detects weapons(Guns/knifes) using `weapon_model` and labels them on the frame.
+    - Detects faces using the YOLO face model and recognizes users via LBPH
+      (`trainneruser.yml`, loaded globally).
+    - Overlays labels for weapons and recognized user names (or 'Unknown').
+    - Displays a window titled 'Image' until 'q' is pressed.
+
+    Side effects:
+    - Opens a new VideoCapture and a display window; press 'q' to exit.
+    - Utilizes global models `model`, `weapon_model`, and `recognizer`.
+    """
 
     camera = cv.VideoCapture(0)
     while True:
@@ -115,14 +162,14 @@ def live_detection():
             break
         else:
             # detect weapon
-            result = model2.predict(frame)
+            result = weapon_model.predict(frame)
             for r in result:
                 annotator = Annotator(frame)
                 boxes = r.boxes
                 for box in boxes:
                     b = box.xyxy[0]
                     c = box.cls
-                    annotator.box_label(b, model2.names[int(c)], 3)
+                    annotator.box_label(b, weapon_model.names[int(c)], 3)
             #detect face
             gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
