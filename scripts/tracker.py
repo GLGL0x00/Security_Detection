@@ -10,17 +10,15 @@ from random import randint
 import json
 import time as t
 
-# Load the YOLO object detection models
-model = YOLO("E:\Ahmed\Security detection\\train attempts\yolov8n_wlr2-Last try\weights\\best.pt")  # Load the first model
-# model = YOLO("best_lastTry.pt")
+# Load the YOLO object detection models  # Load the first model
+model = YOLO("best_lastTry.pt")
 model2 = YOLO('yolov8n.pt')  # Load the second model
 
 # Create a Mediapipe hand object
 mp_hands = mp.solutions.hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.3)
 
 # Create a VideoCapture object to read frames from the webcam
-# cap = cv2.VideoCapture(0)
-cap = cv2.VideoCapture("E:\Ahmed\Security_Dtection-Github - Copy\pics_vids\knife_testt.mp4")
+cap = cv2.VideoCapture(0)
 
 def tracker():
     """
@@ -160,5 +158,6 @@ def tracker():
 
 # Time taken: 92.55 seconds in 1001.mp4 with best_lastTry.pt and yolov8n.pt 
 # Time taken: 258.03 seconds in "E:\Ahmed\demo materials\weapon_videos\Knife2.mp4" with best_lastTry.pt and yolov8n.pt
+
 
 tracker()
