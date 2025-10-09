@@ -41,12 +41,12 @@ Below is the normalized confusion matrix for the weapon detector. Use it to unde
 
 <div align="center">
 
-<img src="screenshots\criminal.128.1.jpg" alt="gun1" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
-<img src="screenshots\criminal.128.2.jpg" alt="gun2" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
-<img src="screenshots\criminal.128.3.jpg" alt="gun3" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
-<img src="screenshots\criminal.128.4.jpg" alt="gun4" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
-<img src="screenshots\criminal.128.148.jpg" alt="gun5" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
-<img src="screenshots\criminal.128.213.jpg" alt="gun6" style="width: 200px; height: 200px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.128.1.jpg" alt="gun1" style="width: 200px; height: 400px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.128.2.jpg" alt="gun2" style="width: 200px; height: 400px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.128.3.jpg" alt="gun3" style="width: 200px; height: 400px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.128.4.jpg" alt="gun4" style="width: 200px; height: 400px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.128.148.jpg" alt="gun5" style="width: 200px; height: 400px; object-fit: cover; margin: 5px;" />
+<img src="screenshots\criminal.128.213.jpg" alt="gun6" style="width: 200px; height: 400px; object-fit: cover; margin: 5px;" />
 
 </div>
 
